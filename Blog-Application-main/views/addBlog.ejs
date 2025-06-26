@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+    <style>
+      /* Optional: Enhance the floating label style */
+      .form-floating > .form-control:focus ~ label,
+      .form-floating > .form-control:not(:placeholder-shown) ~ label {
+        color: #0dcaf0;
+        opacity: 1;
+        font-weight: bold;
+      }
+      .form-floating > label {
+        color: #aaa;
+        opacity: 0.8;
+        transition: color 0.2s, opacity 0.2s;
+      }
+      .custom-btn {
+        background: linear-gradient(90deg, #0d6efd 0%, #6610f2 100%);
+        color: #fff;
+        border: none;
+        font-weight: 600;
+        letter-spacing: 1px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        transition: background 0.3s;
+      }
+      .custom-btn:hover {
+        background: linear-gradient(90deg, #6610f2 0%, #0d6efd 100%);
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('./partials/nav.ejs') %>
+    <div
+      class="container mt-4 bg-dark text-light p-5 rounded shadow-lg"
+      style="max-width: 600px"
+    >
+      <h2 class="mb-4 text-center">Create a New Blog</h2>
+      <form action="/blog" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="coverImage" class="form-label text-light"
+            >Cover Image</label
+          >
+          <input
+            type="file"
+            class="form-control bg-secondary text-light border-0"
+            id="coverImage"
+            name="coverImage"
+            aria-describedby="coverImage"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="title" class="form-label text-light">Title</label>
+          <input
+            type="text"
+            class="form-control bg-secondary text-light border-0"
+            id="title"
+            name="title"
+            aria-describedby="title"
+            placeholder="Enter blog title"
+          />
+        </div>
+        <div class="mb-4">
+          <div class="form-floating">
+            <textarea
+              class="form-control bg-secondary text-light border-0"
+              placeholder="Write your blog body here"
+              id="body"
+              name="body"
+              style="height: 120px"
+              required
+            ></textarea>
+            <!-- <label for="body" class="text-light">Body</label> -->
+          </div>
+        </div>
+        <button type="submit" class="btn custom-btn w-100 py-2">Submit</button>
+      </form>
+    </div>
+    <%- include('./partials/scripts.ejs') %>
+  </body>
+</html>
